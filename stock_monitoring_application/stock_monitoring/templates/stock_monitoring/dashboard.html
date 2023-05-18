@@ -1,0 +1,20 @@
+<!-- dashboard.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <!-- Display the user's watchlist here -->
+    {% for symbol in watchlist %}
+        <p>{{ symbol }}</p>
+    {% endfor %}
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
