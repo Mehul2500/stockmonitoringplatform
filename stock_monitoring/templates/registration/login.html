@@ -12,15 +12,18 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span>Stock Monitoring</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="{% url 'login' %}"><span>Stock Monitoring</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav mx-auto"></ul><a class="btn btn-primary shadow" role="button" href="signup.html">Log Out</a>
+                <ul class="navbar-nav mx-auto"></ul><a class="btn btn-primary shadow" role="button" href="{% url 'registration' %}">Sign Up</a>
             </div>
         </div>
     </nav>
+   
+
     <section class="py-4 py-md-5 my-5">
         <div class="container py-md-5">
             <div class="row">
+
                 <div class="col-md-6 text-center"><img class="img-fluid w-100" src="{% static 'img/illustrations/login.svg' %}"></div>
                 <div class="col-md-5 col-xl-4 text-center text-md-start">
                     <h2 class="display-6 fw-bold mb-5"><span class="underline pb-1"><strong>Login</strong><br></span></h2>
@@ -40,6 +43,7 @@
             </div>
         </div>
     </section>
+    
     <footer></footer>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/startup-modern.js' %}"></script>
