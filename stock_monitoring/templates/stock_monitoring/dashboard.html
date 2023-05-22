@@ -1,24 +1,208 @@
-<!-- dashboard.html -->
-{% extends 'stock_monitoring/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Home - Brand</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap"
+    />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3"
+      id="mainNav"
+    >
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/"
+          ><span>Stock Monitoring</span></a
+        >
+        <button
+          data-bs-toggle="collapse"
+          class="navbar-toggler"
+          data-bs-target="#navcol-1"
+        >
+          <span class="visually-hidden">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="navbar-nav mx-auto"></ul>
+          <a
+            class="btn btn-primary shadow"
+            role="button"
+            href="{% url 'logout' %}"
+            >Log Out</a
+          >
+        </div>
+      </div>
+    </nav>
+    <header class="pt-5">
+      <div class="container pt-4 pt-xl-5">
+        <div class="row pt-5">
+          <div class="col-md-8 text-center text-md-start mx-auto">
+            <div class="text-center">
+              <h1 class="display-4 fw-bold mb-5">
+                Your&nbsp;<span class="underline"
+                  ><strong>Watchlist</strong></span
+                >.
+              </h1>
+              <ul class="list-group">
+                {% for stock in watchlist %}
+                <li class="list-group-item">
+                  {{ stock.symbol }} - {{ stock.price }}
+                </li>
+                {% empty %}
+                <li class="list-group-item">No stocks in your watchlist</li>
+                {% endfor %}
+              </ul>
+              <form
+                class="d-flex justify-content-center flex-wrap"
+                method="post"
+              >
+              {% csrf_token %}
+                <div class="shadow-lg mb-3">
+                  <input
+                    class="form-control"
+
+                    name="symbol"
+                    placeholder="Stock Symbol"
+                  />
+                </div>
+                <div class="shadow-lg mb-3">
+                  <button class="btn btn-primary" type="submit">
+                    Add Stocks
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-12 col-lg-10 mx-auto">
+            <div class="text-center position-relative">
+              <img
+                class="img-fluid"
+                src="{% static 'img/illustrations/meeting.svg' %}"
+                style="width: 800px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section class="py-4 py-xl-5"></section>
+    <footer></footer>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/startup-modern.js' %}"></script>
+  </body>
+</html>
+
+<!-- 
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
+</head>
+
+<body>
+  
+    <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-shrink py-3" id="mainNav">
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span>Stock Monitoring</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="navbar-nav mx-auto"></ul><a class="btn btn-primary shadow" role="button" href="signup.html">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <header class="pt-5">
+        <div class="container pt-4 pt-xl-5">
+            <div class="row pt-5">
+                <div class="col-md-8 text-center text-md-start mx-auto">
+                    <div class="text-center">
+                        <h1 class="display-4 fw-bold mb-5">Your&nbsp;<span class="underline"><strong>Watchlist</strong></span>.</h1>
+                        <ul class="list-group">
+                          {% for stock in watchlist %}
+                            <li class="list-group-item">{{ stock.symbol }} - {{ stock.price }}</li>
+                          {% empty %}
+                            <li class="list-group-item">No stocks in your watchlist</li>
+                          {% endfor %}
+                        </ul>
+                        <br>
+                        
+                        <form class="d-flex justify-content-center flex-wrap" method="post" action="{% url 'add_stock' %}">
+                          {% csrf_token %}
+                          <div class="shadow-lg mb-3"><input class="form-control" type="text" name="symbol" placeholder="Stock Symbol"></div>
+                          <div class="shadow-lg mb-3"><button class="btn btn-primary" type="submit">Add Stocks</button></div>
+                      </form>
+
+                    </div>
+                </div>
+                <div class="col-12 col-lg-10 mx-auto">
+                    <div class="text-center position-relative"><img class="img-fluid" src="{% static 'img/illustrations/meeting.svg' %}" style="width: 800px;"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section></section>
+    <section></section>
+    <section></section>
+    <section class="py-4 py-xl-5"></section>
+    <footer></footer>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/startup-modern.js' %}"></script>
+</body>
+
+</html> -->
+
+<!-- 
 
 {% block content %}
-  <h1>Welcome to the Dashboard</h1>
-  
-  <h2>Your Watchlist</h2>
-  <ul>
-    {% for stock in watchlist %}
-      <li>{{ stock.symbol }} 
-        <a href="{% url 'remove_stock' stock.id %}">Remove</a>
-      </li>
-    {% empty %}
-      <li>No stocks in your watchlist</li>
-    {% endfor %}
-  </ul>
+  <div class="container">
+    <div class="card mt-5">
+      <div class="card-body">
+        <h1 class="text-center mb-4">Welcome to the Dashboard</h1>
 
-  <h2>Add Stock to Watchlist</h2>
-  <form method="POST" action="{% url 'add_stock' %}">
-    {% csrf_token %}
-    <input type="text" name="symbol" placeholder="Stock Symbol">
-    <button type="submit">Add</button>
-  </form>
-{% endblock %}
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title mb-3">Your Watchlist</h2>
+            <ul class="list-group">
+              {% for stock in watchlist %}
+                <li class="list-group-item">{{ stock.symbol }} - {{ stock.price }}</li>
+              {% empty %}
+                <li class="list-group-item">No stocks in your watchlist</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title mb-3">Add Stock to Watchlist</h2>
+            <form class="d-flex" method="POST" action="{% url 'add_stock' %}">
+              {% csrf_token %}
+              <input class="form-control me-2" type="text" name="symbol" placeholder="Stock Symbol">
+              <button class="btn btn-primary" type="submit">Add</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %} -->

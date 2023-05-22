@@ -48,5 +48,6 @@ urlpatterns = [
     path('accounts/logout/', logout_view, name='logout'),
     path('dashboard/', dashboard, name='dashboard'),
     path('add_stock/', add_stock, name='add_stock'),
-    path('remove_stock/<int:stock_id>/', remove_stock, name='remove_stock'),
+    path('remove_stock/<str:stock_id>/', remove_stock, name='remove_stock'),
+    
 ]
