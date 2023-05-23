@@ -13,7 +13,7 @@ Follow these steps to set up the application locally:
 
 2. Navigate to the project directory:
    ```
-   cd stock-monitoring-app
+   cd stock_monitoring_application
    ```
 
 3. Create a virtual environment:
