@@ -29,12 +29,28 @@ Including another URLconf
 # ]
 from django.contrib import admin
 from django.urls import path
-from stock_monitoring.views import dashboard, login_view, logout_view
+# from stock_monitoring.views import dashboard, login_view, logout_view
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('accounts/login/', login_view, name='login'),
+#     path('accounts/logout/', logout_view, name='logout'),
+#     path('', dashboard, name='dashboard'),
+# ]
+
+# from django.contrib import admin
+# from django.urls import path
+from stock_monitoring.views import dashboard, login_view, logout_view, add_stock, remove_stock, registration
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', login_view, name='login'),
     path('accounts/logout/', logout_view, name='logout'),
     path('', dashboard, name='dashboard'),
-]
+    path('add_stock/', add_stock, name='add_stock'),
+    path('remove_stock/<str:stock_symbol>/',
+         remove_stock, name='remove_stock'),
+    path('register/', registration, name='registration'),
 
+]

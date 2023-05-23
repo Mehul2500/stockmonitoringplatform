@@ -1,0 +1,17 @@
+<!-- add_stock.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Stock</title>
+</head>
+<body>
+  <h1>Add Stock</h1>
+  <form method="POST" action="{% url 'add_stock' %}">
+    {% csrf_token %}
+    <label for="symbol">Stock Symbol:</label>
+    <input type="text" id="symbol" name="symbol">
+    <br>
+    <input type="submit" value="Add Stock">
+  </form>
+</body>
+</html>
