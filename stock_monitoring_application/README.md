@@ -8,7 +8,7 @@ Follow these steps to set up the application locally:
 
 1. Clone the repository to your local machine:
    ```
-   git clone <repository-url>
+   git clone https://github.com/Mehul2500/stockmonitoringplatform.git
    ```
 
 2. Navigate to the project directory:
