@@ -69,4 +69,7 @@ To use the stock monitoring platform, follow these steps:
 
 6. **Log Out**: When you are done using the platform, you can log out by clicking the "Log Out" button in the navigation bar. This will securely log you out of your account.
 
+## API Usage Limit (Important)
+Alpha Vantage provides free access to the majority of their API endpoints, allowing users to make up to 5 API requests per minute and 500 API requests per day without charge. This usage limit is suitable for most standard use cases of the stock monitoring application.
+
 Please note that the stock monitoring platform uses the Alpha Vantage API to retrieve stock information. The latest stock values displayed on the dashboard are fetched from the API's TIME_SERIES_INTRADAY endpoint.
